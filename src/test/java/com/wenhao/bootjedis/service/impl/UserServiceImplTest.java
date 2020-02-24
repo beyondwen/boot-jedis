@@ -29,4 +29,9 @@ class UserServiceImplTest {
     void exprieString() {
         userService.exprieString("wenhao1","22121212121");
     }
+
+    @Test
+    void setHash() {
+        userService.setHash("1000");
+    }
 }

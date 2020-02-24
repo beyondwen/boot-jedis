@@ -1,5 +1,6 @@
 package com.wenhao.bootjedis.service.impl;
 
+import com.wenhao.bootjedis.domain.User;
 import com.wenhao.bootjedis.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,5 +48,22 @@ public class UserServiceImpl implements UserService {
         stringRedisTemplate.opsForValue().set(key,value);
         stringRedisTemplate.expire(key,100, TimeUnit.SECONDS);
         log.info("设置过期日期");
+    }
+
+    @Override
+    public User setHash(String key) {
+        User user = new User();
+        user.setAge(22);
+        user.setUsername("wenhao");
+        user.setPassword("12345");
+        if (stringRedisTemplate.opsForHash().hasKey("user",user)){
+            Object user1 = stringRedisTemplate.opsForHash().get("user", user);
+            log.info("从redis中查询");
+            return null;
+        }else {
+            stringRedisTemplate.opsForHash().put("user", key, user);
+            log.info("从redis中查询");
+            return user;
+        }
     }
 }
