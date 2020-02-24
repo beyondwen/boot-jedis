@@ -2,8 +2,8 @@ server:
   port: 7899
 spring:
   redis:
-    port: 7011
-    host: 39.104.50.29
+    port: 6378
+    host: 11.0.0.184
     timeout: 2000
     jedis:
       pool:
