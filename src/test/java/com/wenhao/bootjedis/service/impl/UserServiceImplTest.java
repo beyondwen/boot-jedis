@@ -19,4 +19,14 @@ class UserServiceImplTest {
         String wenhao = userService.getString("wenhao");
         log.info(wenhao);
     }
+
+    @Test
+    void delString() {
+        userService.delString("wenhao");
+    }
+
+    @Test
+    void exprieString() {
+        userService.exprieString("wenhao1","22121212121");
+    }
 }

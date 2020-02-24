@@ -5,9 +5,9 @@ spring:
     port: 6378
     host: 11.0.0.184
     timeout: 2000
-    jedis:
+    lettuce:
       pool:
-        max-active: 6 #最大连接数
-        max-idle: 6 #最大空闲数
-        min-idle: 2 #最小空闲数
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
 
