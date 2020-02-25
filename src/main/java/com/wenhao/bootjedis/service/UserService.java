@@ -10,5 +10,5 @@ public interface UserService {
 
     void exprieString(String key,String value);
 
-    User setHash(String key);
+    User selectById(String id);
 }

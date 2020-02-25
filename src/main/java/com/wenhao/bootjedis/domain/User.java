@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class User {
 
+    private int id;
+
     private int age;
 
     private String username;
@@ -14,7 +16,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "age=" + age +
+                "id=" + id +
+                ", age=" + age +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';

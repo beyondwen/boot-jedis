@@ -44,25 +44,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void exprieString(String key,String value) {
-        stringRedisTemplate.opsForValue().set(key,value);
-        stringRedisTemplate.expire(key,100, TimeUnit.SECONDS);
+    public void exprieString(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
+        stringRedisTemplate.expire(key, 100, TimeUnit.SECONDS);
         log.info("设置过期日期");
     }
 
     @Override
-    public User setHash(String key) {
-        User user = new User();
-        user.setAge(22);
-        user.setUsername("wenhao");
-        user.setPassword("12345");
-        if (stringRedisTemplate.opsForHash().hasKey("user",user)){
-            Object user1 = stringRedisTemplate.opsForHash().get("user", user);
+    public User selectById(String id) {
+        if (redisCacheTemplate.opsForHash().hasKey("user", id)) {
             log.info("从redis中查询");
-            return null;
-        }else {
-            stringRedisTemplate.opsForHash().put("user", key, user);
-            log.info("从redis中查询");
+            return  (User)redisCacheTemplate.opsForHash().get("user", id);
+        } else {
+            User user = new User();
+            user.setAge(22);
+            user.setUsername("wenhao");
+            user.setPassword("12345");
+            redisCacheTemplate.opsForHash().put("user", id, user);
+            log.info("从mysql查询");
             return user;
         }
     }

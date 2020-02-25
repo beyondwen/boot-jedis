@@ -1,5 +1,6 @@
 package com.wenhao.bootjedis.service.impl;
 
+import com.wenhao.bootjedis.domain.User;
 import com.wenhao.bootjedis.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,8 @@ class UserServiceImplTest {
     }
 
     @Test
-    void setHash() {
-        userService.setHash("1000");
+    void selectById() {
+        User user = userService.selectById("1001");
+        System.out.println(user);
     }
 }
