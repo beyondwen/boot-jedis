@@ -33,7 +33,7 @@ class UserServiceImplTest {
 
     @Test
     void selectById() {
-        User user = userService.selectById("1001");
+        User user = userService.selectById("1002");
         System.out.println(user);
     }
 }
